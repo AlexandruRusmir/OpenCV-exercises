@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Prelucrarea Imaginilor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body >
+  <div class="p-3">
+    <h2>Prelucrarea Imaginilor lab1</h2>
+    <p id="status">OpenCV.js loading...</p>
+    <div class="row">
+      <div class="col-5">
+        <img class="image-box" id="imageSrc" alt="No Image" />
+        <div class="caption">imageSrc <input type="file" id="fileInput" name="file" /></div>
+      </div>
+      <div class="col-5">
+        <canvas class="image-box" id="canvasOutput" ></canvas>
+        <div class="caption">canvasOutput</div>
+      </div>
+    </div>
+</div>
+<script type="text/javascript">
+  let imgElement = document.getElementById('imageSrc');
+  let inputElement = document.getElementById('fileInput');
+  inputElement.addEventListener('change', (e) => {
+    imgElement.src = URL.createObjectURL(e.target.files[0]);
+  }, false);
+  imgElement.onload = function() {
+    let mat = cv.imread(imgElement);
+    cv.imshow('canvasOutput', mat);
+    mat.delete();
+
+    const canvas = document.getElementById('canvasOutput');
+    const imageData = canvas.toDataURL();
+    const link = document.createElement('a');
+    link.download = 'processedImage.png';
+    link.href = imageData;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  var Module = {
+    onRuntimeInitialized() {
+      document.getElementById('status').innerHTML = 'OpenCV.js ready.';
+    }
+};
+</script>
+  <script async src="opencv.js" type="text/javascript"></script>
+  
+</body>
+</html>
