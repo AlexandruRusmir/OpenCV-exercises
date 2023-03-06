@@ -1,0 +1,8 @@
+body {
+    font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif !important;
+}
+
+.image-box {
+    max-width: 400px;
+    max-height: 400px;
+}
