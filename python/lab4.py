@@ -45,7 +45,7 @@ for i in range(img.shape[0]):
         if labels[i][j] != 0:
             color_labels[i][j] = colors[int(labels[i][j])-1]
 
-cv2.imshow('Rezultatul primului algoritm', color_labels)
+cv2.imshow('Traversarea in latime', color_labels)
 
 
 
@@ -106,7 +106,7 @@ for i in range(img.shape[0]):
         if labels[i][j] != 0:
             color_labels[i][j] = colors[int(labels[i][j])-1]
 
-cv2.imshow('Rezultatul celui de-al doilea algoritm', color_labels)
+cv2.imshow('Doua treceri cu clase de echivalenta', color_labels)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
